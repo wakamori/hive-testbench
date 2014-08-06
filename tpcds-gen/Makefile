@@ -1,7 +1,7 @@
 
 all: target/lib/dsdgen.jar target/tpcds-gen-1.0-SNAPSHOT.jar
 
-target/tpcds-gen-1.0-SNAPSHOT.jar: $(shell find -name *.java) 
+target/tpcds-gen-1.0-SNAPSHOT.jar: $(shell find . -name *.java) 
 	mvn package
 
 target/tpcds_kit.zip: tpcds_kit.zip
@@ -9,7 +9,7 @@ target/tpcds_kit.zip: tpcds_kit.zip
 	cp tpcds_kit.zip target/tpcds_kit.zip
 
 tpcds_kit.zip:
-	curl --output tpcds_kit.zip http://www.tpc.org/tpcds/dsgen/dsgen-download-files.asp?download_key=NaN
+	curl --output tpcds_kit.zip http://www.tpc.org/tpcds/dsgen/dsgen-download-files.asp?download_key=NaN --proxy proxy.rdh.ecl.ntt.co.jp:20066
 
 target/lib/dsdgen.jar: target/tools/dsdgen
 	cd target/; mkdir -p lib/; ( jar cvf lib/dsdgen.jar tools/ || gjar cvf lib/dsdgen.jar tools/ )

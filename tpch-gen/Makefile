@@ -9,7 +9,7 @@ target/tpch_kit.zip: tpch_kit.zip
 	cp tpch_kit.zip target/tpch_kit.zip
 
 tpch_kit.zip:
-	curl --output tpch_kit.zip http://www.tpc.org/tpch/spec/tpch_2_16_0.zip
+	curl --output tpch_kit.zip http://www.tpc.org/tpch/spec/tpch_2_16_0.zip --proxy proxy.rdh.ecl.ntt.co.jp:20066
 
 target/lib/dbgen.jar: target/tools/dbgen
 	cd target/; mkdir -p lib/; ( jar cvf lib/dbgen.jar tools/ || gjar cvf lib/dbgen.jar tools/ )
